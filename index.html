@@ -272,7 +272,7 @@ nav a:hover, nav a.aktif {
     pointer-events: none;
 }
 
-/* FOTO TAS BERSERAKAN - TANPA KOTAK BACKGROUND */
+/* FOTO TAS BERSERAKAN */
 
 .game-photo {
     position: absolute;
@@ -309,7 +309,7 @@ nav a:hover, nav a.aktif {
     transition: none;
 }
 
-/* FOTO DI DALAM PAPER BAG - TANPA KOTAK */
+/* FOTO DI DALAM PAPER BAG */
 
 .game-photo-dalam {
     width: 48%;
@@ -794,6 +794,25 @@ nav a:hover, nav a.aktif {
     color: var(--mahogany-light);
     text-align: center;
     margin: 5px 0 0;
+}
+
+/* LINK REFERENSI FOTO */
+
+.link-referensi {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin: 5px auto 10px;
+    color: var(--mahogany-light);
+    font-size: 12px;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.link-referensi:hover {
+    color: var(--mahogany);
 }
 
 .produk h4 {
@@ -1536,6 +1555,31 @@ const daftarProduk = [
     }
 ];
 
+/* REFERENSI FOTO SETIAP PRODUK */
+
+const referensiProduk = {
+    1: "https://share.google/VjyV0nwy6txiwv3bd",
+    2: "https://share.google/HYGh2VxcSFqcY6mOg",
+    3: "https://share.google/R1DyvujJ1fj5TFRI9",
+    4: "https://share.google/EFYDMCiu497JRQiPQ",
+    5: "https://share.google/fwUbfT0xJgajiiZpH",
+    6: "https://pin.it/1YAiQt6AY",
+    7: "https://pin.it/3EqoHvLFl",
+    8: "https://share.google/oY0VjJDbSUW1T1yAR",
+    9: "https://share.google/aMgOfwgI639UjHuhh",
+    10: "https://pin.it/5Y6XG6RU6",
+    11: "https://pin.it/4rfTUpoSO",
+    12: "https://pin.it/1ZJlGHBQr",
+    13: "https://pin.it/5g1tyOCJm",
+    14: "https://pin.it/6lqu23V3J",
+    15: "https://pin.it/2goxCBtmc",
+    16: "https://pin.it/2ZPU01hjH",
+    17: "https://pin.it/2nsixR3Xs",
+    18: "https://pin.it/1p2sWblZV",
+    19: "https://pin.it/3IprOSFB5",
+    20: "https://pin.it/4cDu7Mvwt"
+};
+
 let keranjang = [];
 let produkDetailAktif = null;
 let jumlahDetailAktif = 1;
@@ -2092,7 +2136,7 @@ function kontak() {
     `, "kontak");
 }
 
-/* DAFTAR PRODUK */
+/* DAFTAR PRODUK + LINK REFERENSI */
 
 function products() {
     hentikanCarouselProfil();
@@ -2102,7 +2146,8 @@ function products() {
 
         <p class="deskripsi-bagian">
             Klik gambar tas untuk melihat detail ukuran, dimensi,
-            dan bahan produk. Pilih tas favoritmu lalu tambahkan ke keranjang.
+            dan bahan produk. Kamu juga bisa membuka referensi foto
+            setiap tas melalui tautan di bawah gambarnya.
         </p>
 
         <div class="garis-hias"></div>
@@ -2125,6 +2170,16 @@ function products() {
                     </button>
 
                     <p class="petunjuk-gambar">Klik gambar untuk detail ♡</p>
+
+                    <a
+                        class="link-referensi"
+                        href="${referensiProduk[p.id]}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Buka referensi foto ${p.nama}"
+                    >
+                        Lihat Referensi Foto ↗
+                    </a>
 
                     <span class="label-produk">Koleksi Lemareeku</span>
                     <h4>${p.nama}</h4>
@@ -2220,6 +2275,16 @@ function lihatDetail(id) {
                     alt="${produk.nama}"
                     onerror="this.alt='Gambar produk tidak tersedia'; this.style.opacity='0.3';"
                 >
+
+                <a
+                    class="link-referensi"
+                    href="${referensiProduk[produk.id]}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Buka referensi foto ${produk.nama}"
+                >
+                    Lihat Referensi Foto ↗
+                </a>
             </div>
 
             <div class="detail-info">
